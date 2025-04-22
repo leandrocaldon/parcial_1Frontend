@@ -20,6 +20,8 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -31,7 +33,7 @@ const Login = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await axios.post(`${apiUrl}/api/auth/login`, formData);
       
       // Guardar usuario y token
       login(response.data.user, response.data.token);
