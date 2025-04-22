@@ -131,17 +131,18 @@ const PurchaseForm = () => {
         baseURL: process.env.REACT_APP_API_URL || '/api',
       });
       
+      // Cambiar endpoint a /api/purchases
       const purchaseData = {
         product: product.trim(),
         amount: parseFloat(amount),
         customerName: customerName.trim(),
         identificationNumber: identificationNumber.trim(),
         phoneNumber: phoneNumber.trim(),
-        cardNumber: cardNumber.replace(/\s/g, ''), // Eliminar espacios
-        expirationDate: expirationDate.trim()
+        cardNumber: cardNumber.trim(),
+        expirationDate: expirationDate.trim(),
+        cvv: cvv.trim()
       };
-      
-      const response = await api.post('/purchases', purchaseData, config);
+      await api.post('/api/purchases', purchaseData, config);
       
       setSuccess('¡Compra realizada exitosamente!');
       setFormData({
