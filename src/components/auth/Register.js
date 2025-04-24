@@ -50,7 +50,8 @@ const Register = () => {
         role // Incluir el rol seleccionado
       };
       
-      const response = await axios.post('/api/auth/register', registerData);
+      // CAMBIA ESTA URL POR LA DE TU BACKEND EN PRODUCCIÓN
+      const response = await axios.post('https://parcial-1-backend.vercel.app/api/auth/register', registerData);
       
       // Guardar usuario y token
       login(response.data.user, response.data.token);
