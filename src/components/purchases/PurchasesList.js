@@ -32,7 +32,7 @@ const PurchasesList = ({ isAdmin = false }) => {
         }
       };
       
-      const response = await api.get('/purchases', config);
+      const response = await api.get('/api/purchases', config);
       
       // Usar el campo status del backend si existe, sino asignar uno aleatorio para demo
       const purchasesWithStatus = response.data.map(purchase => {
@@ -73,7 +73,7 @@ const PurchasesList = ({ isAdmin = false }) => {
           }
         };
         
-        await api.delete(`/purchases/${purchaseId}`, config);
+        await api.delete(`/api/purchases/${purchaseId}`, config);
         setPurchases(purchases.filter(purchase => purchase._id !== purchaseId));
       } catch (err) {
         console.error('Error al eliminar compra:', err);
